@@ -7,7 +7,7 @@
         <div class="shortcut" @click="openProject">
             
             <h1 id="name">{{projectName}}</h1>
-            <img id="picture" :src="require(`~/assets/${pictureIcon}.webp`)"  alt="project picture" width="395px" height="300px">
+            <img id="picture" :src="require(`~/assets/${projectIcon}.webp`)"  alt="project picture" width="395px" height="300px">
             <img id="language" :src="require(`~/assets//${languageIcon}.webp`)"  alt="project langauge" width="51px" height="57px">
 
         </div>
@@ -20,7 +20,7 @@ export default {
 
     props: {
         projectName: String,
-        pictureIcon: String,
+        projectIcon: String,
         languageIcon: String,
         projectLink: String,
 

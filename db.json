@@ -1,0 +1,32 @@
+{
+  "projectsDB": [
+    {
+      "id": "0",
+      "projectName": "Ray Tracer",
+      "projectIcon": "ray-tracer",
+      "languageIcon": "cpp-icon",
+      "projectLink": "ray-tracer"
+    },
+    {
+      "id": "1",
+      "projectName": "Ray Tracer",
+      "projectIcon": "ray-tracer",
+      "languageIcon": "cpp-icon",
+      "projectLink": "ray-tracer"
+    },
+    {
+      "id": "2",
+      "projectName": "Ray Tracer",
+      "projectIcon": "ray-tracer",
+      "languageIcon": "cpp-icon",
+      "projectLink": "ray-tracer"
+    },
+    {
+      "id": "3",
+      "projectName": "Ray Tracer",
+      "projectIcon": "ray-tracer",
+      "languageIcon": "cpp-icon",
+      "projectLink": "ray-tracer"
+    }
+  ]
+}
