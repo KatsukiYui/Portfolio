@@ -3,8 +3,12 @@
     <div id="projectsContainer">
 
         <!-- v-for: like for each. need to add an iterator like int i so using the id for that-->
-        <div :key="project.id" v-for="project in projects"> <!--elements inside this div will  do the loop-->
-            <ProjectShortcut :projectName="project.projectName" :projectIcon="project.projectIcon" :languageIcon="project.languageIcon" :projectLink="project.projectLink"/>
+        <div v-for="project in projects" :key="project.id"> <!--elements inside this div will  do the loop-->
+            <ProjectShortcut :projectName="project.name" 
+            :projectIcon="project.icon" 
+            :languageIcon="project.language === 'c++' ? 'cpp-icon' : project.language === 'c#' ? 'csharp-icon' : ''"
+            :projectLink="project.link"
+            :projectId="project.id"/>
         </div>
 
         <!-- <ProjectShortcut projectName="Ray Tracer" pictureIcon="ray-tracer" languageIcon="cpp-icon" projectLink="ray-tracer"/>
@@ -16,6 +20,9 @@
 </template>
 
 <script>
+import { db } from '~/plugins/firebase';
+import { collection, getDocs } from 'firebase/firestore';
+
 export default {
     head() {
     return {
@@ -36,11 +43,15 @@ export default {
     }
 },
 async created(){
-            console.log("created called");
 
-            this.projects = await this.fetchProjects();
-            console.log(this.projects);
-        },
+    // this.projects = await this.fetchProjects();
+
+    const querySnapshot = await getDocs(collection(db, 'projects'));
+    this.projects = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+
+    console.log(this.projects);
+},
 
     methods:{   
 
@@ -49,10 +60,10 @@ async created(){
 
         async fetchProjects(){
 
-            const res = await fetch('http://localhost:5000/projectsDB');
-            const data = await res.json();
-            console.log(data);
+            // const res = await fetch('http://localhost:5000/projectsDB');
+            // const data = await res.json();
 
+            console.log(data);
             return data;
         },
 

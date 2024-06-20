@@ -4,10 +4,10 @@
 
         </div>
 
-        <div class="shortcut" @click="openProject">
+        <div class="shortcut" @click="openProject" @mouseover="hover" @mouseleave="unhover">
             
-            <h1 id="name">{{projectName}}</h1>
-            <img id="picture" :src="require(`~/assets/${projectIcon}.webp`)"  alt="project picture" width="395px" height="300px">
+            <h1 id="name" :style="{ color: nameColor }">{{projectName}}</h1>
+            <img id="picture" :src="require(`~/assets/${projectIcon}.webp`)"  alt="project picture">
             <img id="language" :src="require(`~/assets//${languageIcon}.webp`)"  alt="project langauge" width="51px" height="57px">
 
         </div>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+
+
 export default {
 
     props: {
@@ -24,33 +26,50 @@ export default {
         languageIcon: String,
         projectLink: String,
 
+        projectId: String,
+
     },
+
+    data() {
+    return {
+        nameColor: 'rgb(0, 0, 0)',
+    }},
 
     methods:{
         openProject(){
             //add code to open project page
             window.location.href = `/projects/${this.projectLink}`;
+        },
+
+        hover(){
+            this.nameColor = 'rgb(252, 65, 121)';
+            
+        },
+
+        unhover(){
+            this.nameColor = 'rgb(0, 0, 0)';
+            
         }
     }
 
 }
 </script>
 
-<style>
+<style scoped>
 #name{
     padding: 10px;
     background-color: rgb(215, 132, 246);
-    color: black;
+    /* color: black; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    border-style: hidden;
-    border-radius: 15px;
+    border: outset rgb(200, 78, 245);
+    border-radius: 10px;
     width: 270px;
 
     position: absolute;
     z-index: 1;
-    left: 15%;
-    top: 2%;
+    left: 58px;
+    top: -14px;
 
 }
 
@@ -58,13 +77,26 @@ export default {
     position: absolute;
     z-index: 1;
 
-    bottom: 1.5%;
-    right: 3.5%;
+    bottom: 5px;
+    right: 20px;
+}
+
+#picture{
+    
+    border: 2px 1px 2px 1px;
+    border-color: rgba(252, 65, 121, 0.519);
+    border-style: outset;
+
+    width: 395px;
+    height: 300px;
+    object-fit: cover;
+
 }
 
 .shortcut{
     cursor: pointer;
     position: relative;
+
 }
 
 </style>

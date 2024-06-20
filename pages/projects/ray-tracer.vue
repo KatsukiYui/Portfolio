@@ -19,11 +19,17 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 15vh;
+  margin-top: 10vh;
   gap: 2em;
 
   padding-bottom: 50px;
 
 }
+
+.projectName{
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 </style>
 
