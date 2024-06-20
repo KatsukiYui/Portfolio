@@ -1,5 +1,5 @@
 <template>
-    <button class="BaseButton" @click="onClick()" v-bind:to="linkTo" :style="{ background: color, border: borderStyle, fontSize: textSize}">{{ text }}</button>
+    <button class="BaseButton" @click="$emit('btnClick')" :style="{ background: color, border: borderStyle, fontSize: textSize}">{{ text }}</button>
 </template>
   
 <script>
@@ -18,13 +18,7 @@ export default {
         linkTo: String,
     },
     methods: {
-        onClick(){
-            
-            //this.$emit('btnClick');
-            window.location.href = this.linkTo;
-            console.log(this.linkTo);
 
-        }
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <!--specifically for the navigation bar-->
-    <BaseButton class="navButton" @btnClick="$emit('changePage')" :text="text" :linkTo="linkTo" borderStyle="hidden" color="#0000" textSize="18px"/>
+    <BaseButton class="navButton" @btnClick="onClick" :text="text" :linkTo="linkTo" borderStyle="hidden" color="#0000" textSize="18px"/>
 </template>
 
 <script>
@@ -14,6 +14,17 @@ export default {
     },
 
     components: { BaseButton, },
+
+    methods:
+    {
+      onClick(){
+
+        // window.location.href = this.linkTo;
+        this.$router.push({ path: this.linkTo});
+
+
+      }
+    }
 }
 </script>
 

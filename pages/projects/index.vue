@@ -8,7 +8,8 @@
             :projectIcon="project.icon" 
             :languageIcon="project.language === 'c++' ? 'cpp-icon' : project.language === 'c#' ? 'csharp-icon' : ''"
             :projectLink="project.link"
-            :projectId="project.id"/>
+            :projectId="project.id"
+            />
         </div>
 
         <!-- <ProjectShortcut projectName="Ray Tracer" pictureIcon="ray-tracer" languageIcon="cpp-icon" projectLink="ray-tracer"/>
@@ -42,6 +43,7 @@ export default {
       projects: [], //to extract from database :3
     }
 },
+// lifecyle method commonly used for HTTP requests to load the data
 async created(){
 
     // this.projects = await this.fetchProjects();
@@ -50,12 +52,11 @@ async created(){
     this.projects = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
 
-    console.log(this.projects);
+    // console.log(this.projects);
 },
 
     methods:{   
 
-    // lifecyle method commonly used for HTTP requests to load the data
 
 
         async fetchProjects(){
@@ -63,11 +64,12 @@ async created(){
             // const res = await fetch('http://localhost:5000/projectsDB');
             // const data = await res.json();
 
-            console.log(data);
+            //console.log(data);
             return data;
         },
 
     },
+    
 }
 </script>
 

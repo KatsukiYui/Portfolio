@@ -25,6 +25,7 @@ export default {
         projectIcon: String,
         languageIcon: String,
         projectLink: String,
+        projectDescription: String,
 
         projectId: String,
 
@@ -38,7 +39,8 @@ export default {
     methods:{
         openProject(){
             //add code to open project page
-            window.location.href = `/projects/${this.projectLink}`;
+            // window.location.href = `/projects/${this.projectLink}`;
+            this.$router.push({ path: `/projects/-id`, query: { id: this.projectId }});
         },
 
         hover(){
