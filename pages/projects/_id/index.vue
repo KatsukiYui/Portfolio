@@ -1,5 +1,5 @@
 <template>
-  <div id="projectContainer">
+  <div id="projectContainer" v-if="project">
     <h1 class="projectName">{{ project.name }}</h1>
     <div class="projectMedia">
       <div v-if="project.mediaLink && project.videoEmbed">
@@ -7,8 +7,8 @@
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
         gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <div v-else-if="project.mediaLink">
-        <img id="picture" src="~/assets/game-engine.webp" alt="project picture" width="760" height="361" object-fit="cover">
+      <div v-else>
+        <img id="picture" :src="require(`~/assets/${project.mediaLink}.webp`)" alt="project picture" width="760" height="361" object-fit="cover">
       </div>
     </div>
 
@@ -18,36 +18,40 @@
 </template>
 
 <script>
-import { db } from '~/plugins/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 
-data(){
-  return {
-    projectId: String,
-    project: {},
-  }
-},
+  // data() {
+  //   return {
+  //     project: null
+  //   };
+  // },
 
-async created(){
+  async created(){
 
-  this.projectId = this.$route.query.id;
+    //this.projectId = this.$route.query.id; // getting the project id from the url
 
-  try {
+    await this.fetchProjects();
 
-    const doc = (await getDocs(collection(db, 'projects'))).docs.at(this.projectId);
+    // console.log(this.project);
+  },
 
-    if (doc.exists) {
-      this.project = doc.data() ;
-    } else {  
-      console.log('No such document!');
+  computed:{
+
+    ...mapGetters(['getProject']),
+
+    project() {
+      return this.getProject(this.$route.query.id);
     }
-  } catch (error) {
-    console.error('Error getting document:', error);
-  }
-  console.log(this.project);
-},
+  },
+
+  methods:{  
+
+    ...mapActions(['fetchProjects']),
+
+  },
 
 }
 

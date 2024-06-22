@@ -4,27 +4,27 @@
 </template>
 
 <script>
-  import BaseButton from './BaseButton.vue';
+import BaseButton from './BaseButton.vue';
 
 export default {
 
-    props:{
-        text: String,
-        linkTo: String,
-    },
+  props:{
+      text: String,
+      linkTo: String,
+  },
 
-    components: { BaseButton, },
+  components: { BaseButton, },
 
-    methods:
-    {
-      onClick(){
+  methods:
+  {
+    onClick(){
 
-        // window.location.href = this.linkTo;
-        this.$router.push({ path: this.linkTo});
+      // window.location.href = this.linkTo;
+      this.$router.push({ path: this.linkTo});
 
 
-      }
     }
+  }
 }
 </script>
 

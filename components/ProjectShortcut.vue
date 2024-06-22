@@ -8,7 +8,7 @@
             
             <h1 id="name" :style="{ color: nameColor }">{{projectName}}</h1>
             <img id="picture" :src="require(`~/assets/${projectIcon}.webp`)"  alt="project picture">
-            <img id="language" :src="require(`~/assets//${languageIcon}.webp`)"  alt="project langauge" width="51px" height="57px">
+            <img id="language" :src="require(`~/assets/${languageIcon}.webp`)"  alt="project langauge" width="51px" height="57px">
 
         </div>
     </section>
@@ -37,23 +37,18 @@ export default {
     }},
 
     methods:{
-        openProject(){
-            //add code to open project page
-            // window.location.href = `/projects/${this.projectLink}`;
-            this.$router.push({ path: `/projects/-id`, query: { id: this.projectId }});
+        openProject(){      
+            this.$router.push({ path: `/projects/_id`, query: { id: this.projectId }});
         },
 
         hover(){
-            this.nameColor = 'rgb(252, 65, 121)';
-            
+            this.nameColor = 'rgb(252, 65, 121)'; 
         },
 
         unhover(){
-            this.nameColor = 'rgb(0, 0, 0)';
-            
+            this.nameColor = 'rgb(0, 0, 0)';         
         }
     }
-
 }
 </script>
 
