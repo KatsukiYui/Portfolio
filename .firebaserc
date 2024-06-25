@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "projectsdb-812e8"
+    "default": "${REACT_APP_FIREBASE_PROJECT_ID}"
   }
 }
