@@ -3,17 +3,22 @@
     <h1 class="projectName">{{ project.name }}</h1>
     <div class="projectMedia">
       <div v-if="project.mediaLink && project.videoEmbed">
-        <iframe width="760" height="361" :src="project.mediaLink" :title="project.name" 
+        <iframe id="projectVideo" width="854" height="480" :src="project.mediaLink" :title="project.name" 
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
         gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div v-else>
-        <img id="picture" :src="require(`~/assets/${project.mediaLink}.webp`)" alt="project picture" width="760" height="361" object-fit="cover">
+        <img id="projectPicture" :src="require(`~/assets/${project.mediaLink}.webp`)" alt="project picture" width="854" height="480">
       </div>
     </div>
 
+    <p class="projectDescription" v-html="project.description"></p>
 
-    <p class="projectDescription">{{ project.description }}</p>
+    <div class="projectLinks">
+
+      <BaseButton id="linksBtn" text="more.." @btnClick="openLink" background/>
+      <!-- <img id="githubIcon" src="~/assets/github-icon.webp" alt="Github Icon"> -->
+    </div>
   </div>
 </template>
 
@@ -51,6 +56,12 @@ export default {
 
     ...mapActions(['fetchProjects']),
 
+    openLink(){
+      // external links to project github etc
+      window.open(this.project.externalLink, '_blank');
+
+    }
+
   },
 
 }
@@ -64,13 +75,9 @@ export default {
   grid-auto-columns: 50vw;
   grid-auto-columns: 20vh;
 
-  
-
-  margin: 20vh 10vw 10vh;
+  margin: 10vh 7vw 10vh;
   column-gap: auto;
   row-gap: 0.5em;
-
-  padding-bottom: 50px;
 
 }
 
@@ -98,7 +105,7 @@ export default {
   color: rgb(39, 39, 39);
   text-align: left;
 
-  width: 360px;
+  width: 400px;
   max-width: 30vw;
   overflow-wrap: normal;
 
@@ -109,8 +116,63 @@ export default {
 
   grid-column-start: 1;
   grid-row: 1 / span 5;
+}
+
+#projectPicture{
+
+  object-fit: cover;
+  /* object-position: bottom; */
+
+  border: 4px;
+  border-color: rgba(252, 65, 121, 0.519);
+  border-style: outset;
+  overflow: hidden;
+}
+
+#projectVideo
+{
+  border: 4px;
+  border-color: rgba(252, 65, 121, 0.519);
+  border-style: outset;
+  overflow: hidden;
+}
+
+.projectLinks{
+  grid-column-start: 2;
+  grid-row-start: 4;
+
 
 }
 
+#linksBtn{
+  position: absolute;
+  padding: 0.5em 1.5em;
+  margin-top: 0.5em;
+  border-radius: 10px;
+  border: dashed 2px rgb(252, 65, 121);
+  background-color: #00000000;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+
+  cursor: pointer;
+}
+
+#linksBtn:hover{
+  background-color: rgba(252, 65, 121, 0.284);
+  color: white;
+
+}
+
+#linksBtn:active{
+  color: white;
+  background-color: rgb(252, 65, 121);
+}
+
+/* #githubIcon{
+  position:absolute;
+  width: 10px;
+} */
 </style>
 

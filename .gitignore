@@ -88,3 +88,5 @@ sw.*
 
 # Vim swap files
 *.swp
+addProject.js
+serviceAccountKey.json

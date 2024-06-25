@@ -6,6 +6,7 @@
             :languageIcon="project.language === 'c++' ? 'cpp-icon' : project.language === 'c#' ? 'csharp-icon' : ''"
             :projectLink="project.link"
             :projectId="project.id"
+            :isOwnProject="project.ownProject"
             />
         </div>
     </div>

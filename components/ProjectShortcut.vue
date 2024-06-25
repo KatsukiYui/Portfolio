@@ -1,12 +1,10 @@
 <template>
     <section>
-        <div>
-
-        </div>
-
+        
         <div class="shortcut" @click="openProject" @mouseover="hover" @mouseleave="unhover">
             
-            <h1 id="name" :style="{ color: nameColor }">{{projectName}}</h1>
+            <h1 id="name" :style="{ color: nameColor, backgroundColor: isOwnProject ? 'rgb(215, 132, 246)' : 'rgb(0, 216, 251)',
+                borderColor: isOwnProject ? 'rgb(200, 78, 245)' : 'rgb(0, 170, 251)'}">{{projectName}}</h1>
             <img id="picture" :src="require(`~/assets/${projectIcon}.webp`)"  alt="project picture">
             <img id="language" :src="require(`~/assets/${languageIcon}.webp`)"  alt="project langauge" width="51px" height="57px">
 
@@ -26,6 +24,7 @@ export default {
         languageIcon: String,
         projectLink: String,
         projectDescription: String,
+        isOwnProject: Boolean,
 
         projectId: String,
 
@@ -55,11 +54,11 @@ export default {
 <style scoped>
 #name{
     padding: 10px;
-    background-color: rgb(215, 132, 246);
+    /* background-color: rgb(215, 132, 246); */
     /* color: black; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    border: outset rgb(200, 78, 245);
+    border: outset;
     border-radius: 10px;
     width: 270px;
 
@@ -74,8 +73,8 @@ export default {
     position: absolute;
     z-index: 1;
 
-    bottom: 5px;
-    right: 20px;
+    bottom: 5.9px;
+    right: 17px;
 }
 
 #picture{
