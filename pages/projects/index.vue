@@ -1,6 +1,5 @@
 <template>
-
-    <div id="projectsContainer">
+    <div id="projectsContainer" v-if="projects">
         <div v-for="project in projects" :key="project.id">
             <ProjectShortcut :projectName="project.name" 
             :projectIcon="project.icon" 
@@ -14,9 +13,6 @@
 </template>
 
 <script>
-// import { db } from '~/plugins/firebase';
-// import { collection, getDocs } from 'firebase/firestore';
-
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
