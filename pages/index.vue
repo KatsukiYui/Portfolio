@@ -1,20 +1,22 @@
 <template>
-<section>
-  <div id="about">
-      <h2>About Me!</h2>
-      <p>Software engineer with a passion for games.</p>
-      <img src="~/assets/cat.webp" alt="About Image">
-      <div class="aboutLinks">
-        <a href="https://github.com/KatsukiYui" target="_blank" rel="noopener noreferrer" id="github">
-          <img src="~/assets/github-icon.webp" alt="github-icon" class="linkIcon">
-        </a>
-        <a href="https://www.linkedin.com/in/areej-hassan-3bba69198/" target="_blank" rel="noopener noreferrer" id="linkedin">
-          <img src="~/assets/linkedin-icon.webp" alt="linkedin-icon" class="linkIcon">
-        </a>
+  <section>
+    <div id="about">
+        <h2>About Me!</h2>
+        <p>Software engineer with a passion for games.</p>
+        <img src="~/assets/cat.webp" alt="About Image">
+        <div class="aboutLinks">
+          <a href="https://github.com/KatsukiYui" target="_blank" rel="noopener noreferrer" id="github">
+            <img src="~/assets/github-icon.webp" alt="github-icon" class="linkIcon">
+          </a>
+          <a href="https://www.linkedin.com/in/areej-hassan-3bba69198/" target="_blank" rel="noopener noreferrer" id="linkedin">
+            <img src="~/assets/linkedin-icon.webp" alt="linkedin-icon" class="linkIcon">
+          </a>
+          <a :href="`mailto:${email}`" target="_blank" rel="noopener noreferrer" id="email">
+            <img src="~/assets/email-icon.webp" alt="email-icon" class="linkIcon">
+          </a>
+        </div>
       </div>
-    </div>
-</section>
-
+  </section>
 </template>
 
 <script>
@@ -32,9 +34,17 @@ export default {
         }
       ]
     };
+  },
+
+  data() {
+    return {
+      email: process.env.EMAIL_USER,
+    };
   }
 
 }
+
+
 </script>
 
 <style scoped>

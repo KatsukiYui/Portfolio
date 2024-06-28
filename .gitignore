@@ -88,5 +88,18 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# script to add projects to the db
 addProject.js
+
+# private firebase key
 serviceAccountKey.json
+
+# server side stuff
+api/sendEmail.js
+/public
+Portfolio/404.html
+Portfolio/index.html
+.firebase/hosting.cHVibGlj.cache
+.firebaserc
+.firebaserc

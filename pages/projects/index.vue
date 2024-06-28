@@ -62,10 +62,11 @@ export default {
 <style scoped>
 #projectsContainer{
 
+    min-height: max-content;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10%;
-    padding: 5% 20% 5%;
+    padding: 5% 20% 10%;
 
 }
 </style>

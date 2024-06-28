@@ -25,7 +25,7 @@ export default {
     overflow: hidden;
     background-color:rgb(250, 243, 244);
     border-top: groove 3.5px rgb(252, 65, 121);
-    padding: 10px 15px;
+    padding: 10px 30px;
 
 }
 

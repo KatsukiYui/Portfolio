@@ -44,6 +44,10 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
   ],
+  
+  // serverMiddleware: [
+  //   { path: '/api/sendEmail', handler: '~/api/sendEmail.js' }
+  // ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

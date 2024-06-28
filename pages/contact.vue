@@ -59,19 +59,29 @@ export default {
     async submitForm(){
 
       try {
-        const docRef = await addDoc(collection(db, 'contacts'), this.formData);
-        console.log('Document written with ID: ', docRef.id);
-        // Optionally, reset the form or show a success message
-        //this.formData = { name: '', email: '', subject: '', message: '' };
+        // const docRef = await addDoc(collection(db, 'contacts'), this.formData);
+        // console.log('Document written with ID: ', docRef.id);
+
+        // Send email
+        await this.$mail.send({
+          from: this.formData.email,
+          subject: this.formData.subject,
+          text: `Name: ${this.formData.name}\nEmail: ${this.formData.email}\nMessage: ${this.formData.message}`,
+          // text: this.formData.message,
+        });
 
         this.displaySubmitMessage(true);
+        // this.formData = { name: '', email: '', subject: '', message: '' };
+        console.log('Email sent successfully');
+
       } catch (e) {
-        console.error('Error adding document: ', e);
+        console.error('Error sending email: ', e);
 
         this.displaySubmitMessage(false);
       }
       
     },
+    
 
     displaySubmitMessage(success){
       if(success){

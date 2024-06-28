@@ -19,9 +19,7 @@ export default {
   {
     onClick(){
 
-      // window.location.href = this.linkTo;
       this.$router.push({ path: this.linkTo});
-
 
     }
   }
@@ -34,6 +32,11 @@ export default {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(30, 30, 30);
+    font-weight: 500;
+    font-size: 18px;
 
 }
 

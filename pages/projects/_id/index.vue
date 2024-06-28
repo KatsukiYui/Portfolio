@@ -1,6 +1,12 @@
 <template>
   <div id="projectContainer" v-if="project">
     <h1 class="projectName">{{ project.name }}</h1>
+    <div id="projectTools">
+      <div class="tool" v-for="(tool, index) in project.tools" :key="index">
+        <p >{{ tool }}</p>
+      </div>
+    </div>
+
     <div class="projectMedia">
       <div v-if="project.mediaLink && project.videoEmbed">
         <iframe id="projectVideo" width="854" height="480" :src="project.mediaLink" :title="project.name" 
@@ -17,7 +23,6 @@
     <div class="projectLinks">
 
       <BaseButton id="linksBtn" text="more.." @btnClick="openLink" background/>
-      <!-- <img id="githubIcon" src="~/assets/github-icon.webp" alt="Github Icon"> -->
     </div>
   </div>
 </template>
@@ -69,14 +74,18 @@ export default {
 </script>
 
 <style scoped>
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 #projectContainer{
   display: grid;
   grid-template-columns: auto auto auto;
   grid-auto-columns: 50vw;
-  grid-auto-columns: 20vh;
+  /* grid-auto-columns: 20vh; */
 
-  margin: 10vh 7vw 10vh;
-  column-gap: auto;
+  margin: 13vh 7vw 10vh;
+  column-gap: 2em;
   row-gap: 0.5em;
 
 }
@@ -95,10 +104,38 @@ export default {
 
 }
 
+#projectTools{
+  grid-column-start: 2;
+  grid-row-start: 3;
+
+  /* display:inline; */
+
+  display:flex;
+  flex-flow: row wrap;
+
+  column-gap: 0.2em;
+
+}
+
+.tool{
+
+  padding: 0.4em 0.8em;
+  border-radius: 10px;
+  border: solid 2px #252525cd;
+  background-color: #46464672;
+
+  font-size: 12px;
+  font-weight: 1000;
+  text-wrap: nowrap;
+  color: black;
+  max-width: min-content;
+
+}
+
 .projectDescription{
 
   grid-column-start: 2;
-  grid-row-start: 3;
+  grid-row-start: 4;
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 21;
@@ -108,6 +145,7 @@ export default {
   width: 400px;
   max-width: 30vw;
   overflow-wrap: normal;
+  padding-top: 1em;
 
 
 }
@@ -115,7 +153,7 @@ export default {
 .projectMedia{
 
   grid-column-start: 1;
-  grid-row: 1 / span 5;
+  grid-row: 1 / span 6;
 }
 
 #projectPicture{
@@ -139,7 +177,7 @@ export default {
 
 .projectLinks{
   grid-column-start: 2;
-  grid-row-start: 4;
+  grid-row-start: 5;
 
 
 }

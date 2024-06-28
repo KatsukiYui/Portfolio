@@ -1,22 +1,27 @@
 <template>
     <div class="navbar">
-      <NavButton text="Home" linkTo="/"/>
-      <NavButton text="Projects" linkTo="/projects" />
-      <NavButton text="Contact" linkTo="/contact"/>    
+      <NavButton class="navBtn" text="Home" linkTo="/"/>
+      <NavButton class="navBtn" text="Projects" linkTo="/projects" />
+      <!-- <NavButton text="Contact" linkTo="/contact"/>     -->
 
     </div>
-  </template>
-  
-  <script>
+</template>
 
-  export default {
+<script>
 
-  }
-  </script>
-  
-  <style scoped>
-  .navbar {
-    border-radius: 15px;
-  
-  }
-  </style>
+export default {
+
+}
+</script>
+
+<style scoped>
+.navbar {
+  border-radius: 15px;
+
+}
+
+.navBtn{
+  margin-right: 0.5em;
+}
+
+</style>
